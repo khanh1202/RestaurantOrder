@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Database {
     private static Database instance;
-    private Connection connection;
+    private Connection connection; //represents a database connection session
 
     private Database() {
         createConnection();
@@ -15,7 +15,7 @@ public class Database {
 
     private void createConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver"); //call the driver
             connection = DriverManager.getConnection("jdbc:mysql://localhost:8889/test", "root", "root");
         }
         catch (Exception e) {
@@ -23,6 +23,12 @@ public class Database {
         }
     }
 
+    /**
+     * Execute a SQL query
+     * @param query the query string
+     * @return an intance of the result set
+     * @throws Exception
+     */
     public ResultSet executeQuery(String query) throws Exception {
         Statement myStatement = connection.createStatement();
         return myStatement.executeQuery(query);
