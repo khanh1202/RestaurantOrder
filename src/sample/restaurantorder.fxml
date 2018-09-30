@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="800.0">
+               <children>
+                  <Label text="Customer Details">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="74.0" prefWidth="250.0">
+                           <children>
+                              <Label text="Customer name:">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField promptText="Enter customer name">
+                                 <HBox.margin>
+                                    <Insets top="25.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="74.0" prefWidth="240.0">
+                           <children>
+                              <Label text="Table number:">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField promptText="Enter table number">
+                                 <HBox.margin>
+                                    <Insets top="25.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="74.0" prefWidth="289.0">
+                           <children>
+                              <Label text="Meal type:">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox mnemonicParsing="false" text="Breakfast">
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Lunch">
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Dinner">
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="800.0">
+               <children>
+                  <Label text="Choose Menu Items">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="74.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Food">
+                                 <HBox.margin>
+                                    <Insets right="15.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="26.0" prefWidth="280.0" promptText="---------------Select your Food---------------">
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="74.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Beverage">
+                                 <HBox.margin>
+                                    <Insets right="15.0" top="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="26.0" prefWidth="280.0" promptText="-------------Select your Beverage-------------">
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="170.0" prefWidth="800.0">
+               <children>
+                  <Label text="Order Status">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="125.0" prefWidth="800.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Orders with waiting state (No orders available to prepare)">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Displaying orders..." />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Orders with served state (No orders available to serve)">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Displaying orders..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Menu Choices and Nutrition Information">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="200.80001527071" text="Item Name" />
+                      <TableColumn minWidth="4.800018310546875" prefWidth="112.00001525878906" text="Energy" />
+                        <TableColumn prefWidth="104.0" text="Protein" />
+                        <TableColumn minWidth="8.0" prefWidth="94.39996337890625" text="Carbonhydrate" />
+                        <TableColumn prefWidth="100.0" text="Total Fat" />
+                        <TableColumn prefWidth="94.40008544921875" text="Fibre" />
+                        <TableColumn prefWidth="102.4000244140625" text="Price" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox prefHeight="79.0" prefWidth="800.0">
+               <children>
+                  <Label text="Command Buttons">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Enter Data">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Display Choices">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Display Order">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Prepare">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Bill">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Clear Display">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Quit">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
