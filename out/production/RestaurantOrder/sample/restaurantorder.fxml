@@ -5,8 +5,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
@@ -208,25 +206,7 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-               <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Menu Choices and Nutrition Information">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-                    <columns>
-                      <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Item Name" />
-                      <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Energy" />
-                        <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Protein" />
-                        <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Carbonhydrate" />
-                        <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Total Fat" />
-                        <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Fibre" />
-                        <TableColumn maxWidth="-Infinity" minWidth="-Infinity" prefWidth="-1.0" text="Price" />
-                    </columns>
-                  </TableView>
-               </children>
+            <VBox fx:id="displayVB" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
