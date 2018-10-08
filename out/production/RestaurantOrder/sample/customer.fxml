@@ -232,16 +232,6 @@
                               <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="prepareBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Prepare">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="billBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Bill">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
                         <Button fx:id="clearBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Clear Display">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />

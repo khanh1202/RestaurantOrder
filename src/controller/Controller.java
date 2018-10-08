@@ -1,4 +1,4 @@
-package sample;
+package controller;
 
 import database.Database;
 import javafx.fxml.FXML;
