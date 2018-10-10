@@ -4,7 +4,7 @@ public interface Validator {
     boolean test(String string);
 
     static boolean testIsNull(String string) {
-        return string.equals("");
+        return string == null || string.equals("");
     }
 
     static boolean testIsNumericFrom1To10(String string) {

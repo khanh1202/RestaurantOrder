@@ -26,6 +26,8 @@ public class Controller {
     private ComboBox<String> foodList;
     @FXML
     private ComboBox<String> beverageList;
+    @FXML
+    private ListView<String> orderWaitingLV;
     private RadioButton chosenButton;
     @FXML
     public void initialize() throws Exception {
@@ -49,18 +51,49 @@ public class Controller {
                 Validation.alertInvalid("", "Radio button must be checked", (meal) -> {
                     return !Validator.testIsNull(meal);
                 });
-            Validation.fireErrorMessage();
+            Validation.alertInvalid(foodList.getValue(), "Food must be selected", (food) -> {
+                return !Validator.testIsNull(food);
+            });
+            Validation.alertInvalid(beverageList.getValue(), "Beverage must be selected", (beverage) -> {
+                return !Validator.testIsNull(beverage);
+            });
+            if (!Validation.getErrorMessage().equals(""))
+                Validation.fireErrorMessage();
+            else {
+                MessageBox.show("Order Placed Successfully", "Information");
+                placeOrder();
+                resetForm();
+            }
         });
 
         mealGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                chosenButton = (RadioButton)newValue.getToggleGroup().getSelectedToggle();
-                foodList.setDisable(false);
-                beverageList.setDisable(false);
+                if (newValue != null)
+                    chosenButton = (RadioButton)newValue.getToggleGroup().getSelectedToggle();
+                if (chosenButton != null) {
+                    foodList.setDisable(false);
+                    beverageList.setDisable(false);
+                }
+                else {
+                    foodList.setDisable(true);
+                    beverageList.setDisable(true);
+                }
+
                 manipulateComboBoxes(chosenButton.getText());
             }
         });
+    }
+
+    private void placeOrder() {
+        orderWaitingLV.getItems().add(custnameTF.getText() + "|Table: " + tablenumTF.getText() + "|" + foodList.getValue() + ", " +
+        beverageList.getValue());
+    }
+
+    private void resetForm() {
+        custnameTF.setText("");
+        tablenumTF.setText("");
+        mealGroup.getSelectedToggle().setSelected(false);
     }
 
     private void manipulateComboBoxes(String meal) {

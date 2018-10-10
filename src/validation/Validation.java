@@ -10,8 +10,11 @@ public class Validation {
     }
 
     public static void fireErrorMessage() {
-        if (!errorMessage.equals(""))
-            MessageBox.show(errorMessage, "Input Error");
+        MessageBox.show(errorMessage, "Input Error");
         errorMessage = "";
+    }
+
+    public static String getErrorMessage() {
+        return errorMessage;
     }
 }
