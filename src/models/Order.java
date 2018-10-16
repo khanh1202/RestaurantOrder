@@ -7,6 +7,7 @@ public class Order {
     private String food_name;
     private String beverage_name;
     private String served;
+    private String ordered;
 
     public Order(int order_id, String customer_name, int table_num, String food_name, String beverage_name, String served) {
         this.order_id = order_id;
@@ -39,6 +40,39 @@ public class Order {
 
     public String getServed() {
         return served;
+    }
+
+    public String getOrdered() {
+        ordered = food_name + ", " + beverage_name;
+        return ordered;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public void setTable_num(int table_num) {
+        this.table_num = table_num;
+    }
+
+    public void setFood_name(String food_name) {
+        this.food_name = food_name;
+    }
+
+    public void setBeverage_name(String beverage_name) {
+        this.beverage_name = beverage_name;
+    }
+
+    public void setServed(String served) {
+        this.served = served;
+    }
+
+    public void setOrdered(String ordered) {
+        this.ordered = ordered;
     }
 
     @Override

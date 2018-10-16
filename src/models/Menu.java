@@ -1,6 +1,8 @@
 package models;
 
 import database.Database;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -53,6 +55,22 @@ public class Menu {
         result.addAll(items.stream()
                 .filter(item -> item.getMeal().equals(meal) && item.getType().equals(foodtype))
                 .collect(Collectors.toList()));
+        return result;
+    }
+
+    public ObservableList<MenuItem> getItemsByName(String food, String beverage) {
+        ObservableList<MenuItem> result = FXCollections.observableArrayList();
+        result.addAll(items.stream()
+                .filter(item -> item.getName().equals(food) || item.getName().equals(beverage))
+                .collect(Collectors.toList()));
+        Double totalEnergy = result.stream().mapToDouble(MenuItem::getEnergy).sum();
+        Double totalProtein = result.stream().mapToDouble(MenuItem::getProtein).sum();
+        Double totalCabohydrate = result.stream().mapToDouble(MenuItem::getCarbohydrate).sum();
+        Double totalFat = result.stream().mapToDouble(MenuItem::getFat).sum();
+        Double totalFibre = result.stream().mapToDouble(MenuItem::getFibre).sum();
+        Integer totalPrice = result.stream().mapToInt(MenuItem::getPrice).sum();
+        result.add(new MenuItem(0, "any", "any", "Total Nutrient for each type", totalPrice, totalEnergy,
+                totalProtein, totalCabohydrate, totalFat, totalFibre));
         return result;
     }
 }

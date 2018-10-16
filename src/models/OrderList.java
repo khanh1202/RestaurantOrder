@@ -1,6 +1,8 @@
 package models;
 
 import database.Database;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class OrderList {
     }
 
     public void fetchOrders() {
+        orders.clear();
         String query = "select o.id, o.customer_name, o.table_num, o.served, m1.item_name AS food, m2.item_name as beverage from orders o INNER JOIN menu m1" +
                 " on o.food_id = m1.item_id INNER JOIN menu m2" +
                 " on o.beverage_id = m2.item_id";
@@ -50,8 +53,14 @@ public class OrderList {
         return result;
     }
 
-    public ArrayList<Order> orderAtTable(int tableNum) {
+    public ArrayList<Order> servedOrders() {
         ArrayList<Order> result = new ArrayList<>();
+        result.addAll(orders.stream().filter(order -> order.getServed().equals("ready")).collect(Collectors.toList()));
+        return result;
+    }
+
+    public ObservableList<Order> orderAtTable(int tableNum) {
+        ObservableList<Order> result = FXCollections.observableArrayList();
         result.addAll(orders.stream().filter(order -> order.getTable_num() == tableNum).collect(Collectors.toList()));
         return result;
     }
