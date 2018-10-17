@@ -4,6 +4,7 @@ import database.Database;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -140,14 +141,20 @@ public class Controller {
     }
 
     private void displayOrder() {
-        displayLbl.setText("Ordered Items at Table " + tablenumTF.getText());
-        displayTable.getColumns().clear();
-        displayTable.setItems(OrderList.instance().orderAtTable(Integer.valueOf(tablenumTF.getText())));
-        TableColumn<Order, String> customerCol = new TableColumn<>("Customer Name");
-        TableColumn<Order, String> orderedCol = new TableColumn<>("Ordered Items");
-        customerCol.setCellValueFactory(new PropertyValueFactory<Order, String>("Customer_name"));
-        orderedCol.setCellValueFactory(new PropertyValueFactory<Order, String>("Ordered"));
-        displayTable.getColumns().addAll(customerCol, orderedCol);
+        ObservableList<Order> atTable = OrderList.instance().orderAtTable(Integer.valueOf(tablenumTF.getText()));
+        if (atTable.size() != 0) {
+            displayLbl.setText("Ordered Items at Table " + tablenumTF.getText());
+            displayTable.getColumns().clear();
+            displayTable.setItems(atTable);
+            TableColumn<Order, String> customerCol = new TableColumn<>("Customer Name");
+            TableColumn<Order, String> orderedCol = new TableColumn<>("Ordered Items");
+            customerCol.setCellValueFactory(new PropertyValueFactory<Order, String>("Customer_name"));
+            orderedCol.setCellValueFactory(new PropertyValueFactory<Order, String>("Ordered"));
+            displayTable.getColumns().addAll(customerCol, orderedCol);
+        }
+        else {
+            MessageBox.show("No order at table " + tablenumTF.getText(), "Empty result");
+        }
     }
 
     private void displayChoice() {
