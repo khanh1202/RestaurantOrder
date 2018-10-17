@@ -57,7 +57,7 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="tablenumTF" promptText="Enter table number">
+                              <TextField fx:id="tablenumTF" promptText="Enter table number" styleClass="table_num">
                                  <HBox.margin>
                                     <Insets top="20.0" />
                                  </HBox.margin>

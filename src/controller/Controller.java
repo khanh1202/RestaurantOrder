@@ -1,6 +1,7 @@
 package controller;
 
 import database.Database;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -43,9 +44,10 @@ public class Controller {
     @FXML
     private Button clearBtn;
     private RadioButton chosenButton;
+    private ClientPoint client;
     @FXML
     public void initialize() throws Exception {
-        ClientPoint client = new ClientPoint("localhost", this);
+        client = new ClientPoint("localhost", this);
         client.start();
         Database.instance().setUp();
         registerButtons();
@@ -77,6 +79,15 @@ public class Controller {
                 MessageBox.show("Order Placed Successfully", "Information");
                 placeOrder();
                 resetForm();
+            }
+        });
+
+        tablenumTF.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                Validation.changeFontColor(tablenumTF, (tablenum) -> {
+                    return Validator.testIsNumericFrom1To10(tablenum);
+                });
             }
         });
 
@@ -178,6 +189,7 @@ public class Controller {
                 Integer.valueOf(tablenumTF.getText()), foodList.getValue().getName(), beverageList.getValue().getName(), "waiting");
         Database.instance().addOrder(newOrder, foodList.getValue().getId(), beverageList.getValue().getId());
         orderWaitingLV.getItems().add(newOrder);
+        client.notifyServer();
     }
 
     private void resetForm() {
@@ -200,6 +212,12 @@ public class Controller {
 
     public void updateOrders() {
         OrderList.instance().fetchOrders();
-        getExistingOrders();
+        Platform.runLater(() -> getExistingOrders());
     }
+
+    public void stopClient() {
+        client.setShouldStop(true);
+        client.quitServer();
+    }
+
 }

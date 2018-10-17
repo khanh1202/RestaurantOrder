@@ -1,5 +1,6 @@
 package sample;
 
+import controller.Controller;
 import database.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +12,18 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("customer.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("customer.fxml"));
+        Parent root = loader.load();
         primaryStage.setTitle("Customer");
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("sample/customer.css");
+        primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> {
             try {
                 Database.instance().close();
+                Controller myCtrl = loader.getController();
+                myCtrl.stopClient();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
