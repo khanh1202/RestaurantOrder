@@ -9,6 +9,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * Handling all database logics and query
+ * @author Gia Khanh Dinh
+ */
 public class Database {
     private static Database instance;
     private Connection connection; //represents a database connection session
@@ -17,6 +21,9 @@ public class Database {
         createConnection();
     }
 
+    /**
+     * Create a connection to a database
+     */
     private void createConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver"); //call the driver
@@ -28,7 +35,7 @@ public class Database {
     }
 
     /**
-     * Execute a SQL query
+     * Execute a SQL SELECT query
      * @param query the query string
      * @return an intance of the result set
      * @throws Exception
@@ -38,6 +45,11 @@ public class Database {
         return myStatement.executeQuery(query);
     }
 
+    /**
+     * Execute an update query (UPDATE, DELETE, INSERT, etc.)
+     * @param query the query string
+     * @throws Exception
+     */
     public void executeUpdate(String query) throws Exception {
         Statement myStatement = connection.createStatement();
         myStatement.executeUpdate(query);
@@ -57,6 +69,12 @@ public class Database {
         OrderList.instance().fetchOrders();
     }
 
+    /**
+     * Insert a new Order to the database
+     * @param order the order object to be added
+     * @param foodId the foodId of the order
+     * @param beverageId the beverage Id of the order
+     */
     public void addOrder(Order order, int foodId, int beverageId) {
         try {
             String query = "insert into orders values (" + order.getOrder_id() + ",'" + order.getCustomer_name() + "'," +
@@ -70,6 +88,10 @@ public class Database {
 
     }
 
+    /**
+     * Close the connection to the database
+     * @throws Exception
+     */
     public void close() throws Exception {
         connection.close();
     }

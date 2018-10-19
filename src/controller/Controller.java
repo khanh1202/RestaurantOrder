@@ -16,7 +16,10 @@ import validation.Validation;
 import validation.Validator;
 
 
-
+/**
+ * Takes care of all logics of the application
+ * @author Gia Khanh Dinh
+ */
 public class Controller {
     @FXML
     private TextField custnameTF;
@@ -56,8 +59,12 @@ public class Controller {
         getExistingOrders();
     }
 
+    /**
+     * Add event handler to all control elements
+     */
     private void registerButtons() {
         enterDataBtn.setOnAction(event -> {
+            //Check all input fields from the users and display error if there is an invalid input
             Validation.alertInvalid(custnameTF.getText(), "Customer Name is required", (name) -> {
                 return !Validator.testIsNull(name);
             });
@@ -83,6 +90,7 @@ public class Controller {
             }
         });
 
+        //Asynchronously check the input from the users and change text color if input is valid or not
         tablenumTF.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -92,6 +100,7 @@ public class Controller {
             }
         });
 
+        //Check if a radio button is selected. If yes, users can select the food and beverage
         mealGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
@@ -140,6 +149,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Create and manipulate a table to display order at a specified table
+     */
     private void displayOrder() {
         ObservableList<Order> atTable = OrderList.instance().orderAtTable(Integer.valueOf(tablenumTF.getText()));
         if (atTable.size() != 0) {
@@ -157,6 +169,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Create and manipulate a table to display choice selected by user
+     */
     private void displayChoice() {
         displayLbl.setText("Menu Choices and Nutrition Information");
         displayTable.getColumns().clear();
@@ -183,6 +198,9 @@ public class Controller {
         displayTable.getColumns().clear();
     }
 
+    /**
+     * Update the waiting and served list as soon as there is an update from this interface or other interface
+     */
     private void getExistingOrders() {
         orderWaitingLV.getItems().clear();
         orderServedLV.getItems().clear();
@@ -190,6 +208,9 @@ public class Controller {
         orderServedLV.getItems().addAll(OrderList.instance().servedOrders());
     }
 
+    /**
+     * Add an order to the database and notify other clients to update their interfaces
+     */
     private void placeOrder() {
         Order lastOrder = OrderList.instance().lastOrder();
         Order newOrder = new Order(lastOrder == null? 1 : lastOrder.getOrder_id() + 1, custnameTF.getText(),
@@ -205,6 +226,10 @@ public class Controller {
         mealGroup.getSelectedToggle().setSelected(false);
     }
 
+    /**
+     * instantiate choices to the combo boxes based on meal type chosen by users
+     * @param meal
+     */
     private void manipulateComboBoxes(String meal) {
         try {
             foodList.getItems().clear();

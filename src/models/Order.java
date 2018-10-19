@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * The order made by a customer
+ * @author Gia Khanh Dinh
+ */
 public class Order {
     private int order_id;
     private String customer_name;
@@ -7,7 +11,7 @@ public class Order {
     private String food_name;
     private String beverage_name;
     private String served;
-    private String ordered;
+    private String ordered; //concatenation of food name and beverage name
 
     public Order(int order_id, String customer_name, int table_num, String food_name, String beverage_name, String served) {
         this.order_id = order_id;
