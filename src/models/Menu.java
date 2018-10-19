@@ -6,12 +6,16 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Menu class that manages and manipulate items in the menu
+ *
+ * @author Gia Khanh Dinh
+ */
 public class Menu {
     private static Menu instance;
-    private ArrayList<MenuItem> items;
+    private ArrayList<MenuItem> items; //list of items in the menu
 
     private Menu() {
         items = new ArrayList<>();
@@ -21,10 +25,6 @@ public class Menu {
         if (instance == null)
             instance = new Menu();
         return instance;
-    }
-
-    public void addItem(MenuItem item) {
-        this.items.add(item);
     }
 
     /**
@@ -50,6 +50,12 @@ public class Menu {
         }
     }
 
+    /**
+     * get a list of items matching a meal type and food type
+     * @param meal the meal type
+     * @param foodtype the food type
+     * @return the list of items matching the parameters
+     */
     public ArrayList<MenuItem> getItemsByMeal(String meal, String foodtype) {
         ArrayList<MenuItem> result = new ArrayList<>();
         result.addAll(items.stream()
@@ -58,6 +64,12 @@ public class Menu {
         return result;
     }
 
+    /**
+     * get all the items that matches the name of the food/beverage
+     * @param food food name
+     * @param beverage beverage name
+     * @return the list of items
+     */
     public ObservableList<MenuItem> getItemsByName(String food, String beverage) {
         ObservableList<MenuItem> result = FXCollections.observableArrayList();
         result.addAll(items.stream()

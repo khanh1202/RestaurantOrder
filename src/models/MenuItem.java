@@ -1,10 +1,14 @@
 package models;
 
+/**
+ * An menu item
+ * @author Gia Khanh Dinh
+ */
 public class MenuItem {
     private int id;
-    private String type;
+    private String type; //food or beverage
     private String name;
-    private String meal;
+    private String meal; //breakfast, lunch or dinner
     private int price;
     private double energy;
     private double protein;
